@@ -79,4 +79,6 @@ Vagrant.configure(2) do |config|
     v.customize ["modifyvm", :id, "--name", "testVM_Ubunut1204_64", "--memory", "512"]
   end
 
+  config.vm.host_name = "ubuntu12-64"
+
 end

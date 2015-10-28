@@ -1,0 +1,90 @@
+####testMachine
+
+eth0      Link encap:Ethernet  HWaddr 08:00:27:88:0c:a6  
+          inet addr:10.0.2.15  Bcast:10.0.2.255  Mask:255.255.255.0
+          inet6 addr: fe80::a00:27ff:fe88:ca6/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:466 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:388 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:54679 (54.6 KB)  TX bytes:44544 (44.5 KB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+####
+
+#####app
+
+eth0      Link encap:Ethernet  HWaddr 08:00:27:88:0c:a6  
+          inet addr:10.0.2.15  Bcast:10.0.2.255  Mask:255.255.255.0
+          inet6 addr: fe80::a00:27ff:fe88:ca6/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:693 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:537 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:75315 (75.3 KB)  TX bytes:61312 (61.3 KB)
+
+eth1      Link encap:Ethernet  HWaddr 08:00:27:04:c6:97  
+          inet addr:192.168.33.11  Bcast:192.168.33.255  Mask:255.255.255.0
+          inet6 addr: fe80::a00:27ff:fe04:c697/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:13 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 B)  TX bytes:1086 (1.0 KB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
+
+#######db
+
+eth0      Link encap:Ethernet  HWaddr 08:00:27:88:0c:a6  
+          inet addr:10.0.2.15  Bcast:10.0.2.255  Mask:255.255.255.0
+          inet6 addr: fe80::a00:27ff:fe88:ca6/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:708 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:546 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:76284 (76.2 KB)  TX bytes:62052 (62.0 KB)
+
+eth1      Link encap:Ethernet  HWaddr 08:00:27:38:26:8a  
+          inet addr:192.168.33.12  Bcast:192.168.33.255  Mask:255.255.255.0
+          inet6 addr: fe80::a00:27ff:fe38:268a/64 Scope:Link
+          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
+          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:13 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:1000 
+          RX bytes:0 (0.0 B)  TX bytes:1086 (1.0 KB)
+
+lo        Link encap:Local Loopback  
+          inet addr:127.0.0.1  Mask:255.0.0.0
+          inet6 addr: ::1/128 Scope:Host
+          UP LOOPBACK RUNNING  MTU:16436  Metric:1
+          RX packets:6 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:6 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:486 (486.0 B)  TX bytes:486 (486.0 B)
+########
+
+Result:
+(1) from testMachine:
+     ssh vagrant@192.168.33.11 #(password:vagrant) ok go to app
+     ssh vagrant@192.168.33.12 #(password:vagrant) ok go to db
+     ssh vagrant@10.0.2.15 #(password:vagrant) ok go to testMachine
+(2) from app:
+     ....
+(3) from db:
+     ..... (easily expected)

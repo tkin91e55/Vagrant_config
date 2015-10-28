@@ -1,0 +1,14 @@
+Vagrant record
+
+#1. to add an image(box), but no machine initialized yet
+vagrant box add hashicorp/precise32
+
+#2. to package out the current box
+vagrant package --output mybox.box
+
+#3. register a new box with the local box file
+vagrant box add newBox mybox.box
+
+#4. list the udpated box list
+vagrant box list
+

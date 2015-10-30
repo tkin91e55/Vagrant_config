@@ -11,4 +11,3 @@ vagrant box add newBox mybox.box
 
 #4. list the udpated box list
 vagrant box list
-

@@ -74,12 +74,14 @@ Vagrant.configure(2) do |config|
     app_config.vm.box = "ubuntu"
     app_config.vm.host_name = "app"
     app_config.vm.network "private_network", ip: "192.168.33.11"
+    app_config.ssh.insert_key = false
 
     #customize vm name, memory (this have problem if defining multiple machines), assigning same
     #name to multiple machines as prohibited in virtual box gui!!!
     #https://docs.vagrantup.com/v2/virtualbox/configuration.html
     app_config.vm.provider "virtualbox" do |v|
       v.customize ["modifyvm", :id, "--name", "app", "--memory", "512"]
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     end
   end
 
@@ -90,6 +92,7 @@ Vagrant.configure(2) do |config|
   db_config.vm.network "private_network", ip: "192.168.33.12"
     db_config.vm.provider "virtualbox" do |v|
       v.customize ["modifyvm", :id, "--name", "db", "--memory", "512"]
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     end
   end
 

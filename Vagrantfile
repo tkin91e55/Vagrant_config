@@ -98,4 +98,18 @@ Vagrant.configure(2) do |config|
 
   config.vm.host_name = "ubuntu12-64"
 
+  #define another new machine: Ansible
+  config.vm.define :Ansible do |db_config|
+  db_config.vm.box = "hashicorp/precise64"
+  db_config.vm.host_name = "anisble"
+  db_config.vm.network "private_network", ip: "192.168.33.13"
+    db_config.vm.provider "virtualbox" do |v|
+      v.customize ["modifyvm", :id, "--name", "ansible", "--memory", "512"]
+      v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
+    end
+  end
+
+  config.vm.host_name = "ubuntu12-64"
+
+
 end

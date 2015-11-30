@@ -85,13 +85,13 @@ Vagrant.configure(2) do |config|
     end
   end
 
-  #define another new machine: DB
-  config.vm.define :DB do |db_config|
-  db_config.vm.box = "ubuntu"
-  db_config.vm.host_name = "db"
-  db_config.vm.network "private_network", ip: "192.168.33.12"
-    db_config.vm.provider "virtualbox" do |v|
-      v.customize ["modifyvm", :id, "--name", "db", "--memory", "512"]
+  #define another new machine: AnsibleSlave
+  config.vm.define :AnsibleSlave do |slave_config|
+  slave_config.vm.box = "hashicorp/precise64"
+  slave_config.vm.host_name = "slave"
+  slave_config.vm.network "private_network", ip: "192.168.33.12"
+    slave_config.vm.provider "virtualbox" do |v|
+      v.customize ["modifyvm", :id, "--name", "ansibleSlave", "--memory", "512"]
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     end
   end
@@ -99,11 +99,11 @@ Vagrant.configure(2) do |config|
   config.vm.host_name = "ubuntu12-64"
 
   #define another new machine: Ansible
-  config.vm.define :Ansible do |db_config|
-  db_config.vm.box = "hashicorp/precise64"
-  db_config.vm.host_name = "anisble"
-  db_config.vm.network "private_network", ip: "192.168.33.13"
-    db_config.vm.provider "virtualbox" do |v|
+  config.vm.define :Ansible do |master_config|
+  master_config.vm.box = "hashicorp/precise64"
+  master_config.vm.host_name = "anisble"
+  master_config.vm.network "private_network", ip: "192.168.33.13"
+    master_config.vm.provider "virtualbox" do |v|
       v.customize ["modifyvm", :id, "--name", "ansible", "--memory", "512"]
       v.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
     end

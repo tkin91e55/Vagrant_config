@@ -96,8 +96,6 @@ Vagrant.configure(2) do |config|
     end
   end
 
-  config.vm.host_name = "ubuntu12-64"
-
   #define another new machine: Ansible
   config.vm.define :Ansible do |master_config|
   master_config.vm.box = "hashicorp/precise64"

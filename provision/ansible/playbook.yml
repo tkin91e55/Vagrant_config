@@ -2,5 +2,10 @@
 - hosts: all
   sudo: yes
   tasks:
-    - name: ensure vim is at the latest version
-      apt: name=vim state=present update_cache=true
+  - name: ensure ntp is at the latest version
+    apt: pkg=ntp state=latest update_cache=true
+    notify:
+    - restart ntpd
+  handlers:
+    - name: restart ntpd
+      service: name=ntp state=restarted

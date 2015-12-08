@@ -46,11 +46,8 @@ Vagrant.configure(2) do |config|
     end
 
     master_config.vm.provision "ansible" do |ansible|
+      ansible.inventory_path = "staticInventory/vagrant_ansible_inventory"
       ansible.playbook = "provision/ansible/playbook.yml"
-      ansible.groups = {
-        "local" => ["Ansible"],
-        "all_groups:children" => ["local"]
-      }
     end
   end
 

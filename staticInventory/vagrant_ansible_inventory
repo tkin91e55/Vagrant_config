@@ -1,3 +1,7 @@
 # static inventory
 
-Ansible ansible_ssh_host=192.168.33.13 ansible_ssh_port=2222 ansible_ssh_private_key_file=/Users/tkingkwun/Development/Vagrant/Test/.vagrant/machines/Ansible/virtualbox/private_key
+#The SSH host addresses (and ports) must obviously be specified twice, in Vagrantfile and ansible.inventory_path files
+#https://docs.vagrantup.com/v2/provisioning/ansible.html
+#may use "Ansible ansible_ssh_host=127.0.0.1 ansible_ssh_port=2222" after portforwarding in Vagrantfile
+
+Ansible ansible_ssh_host=192.168.33.13 ansible_ssh_port=22

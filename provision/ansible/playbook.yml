@@ -1,5 +1,5 @@
 ---
-- hosts: all
+- hosts: local
   sudo: yes
   tasks:
   - name: ensure ntp is at the latest version

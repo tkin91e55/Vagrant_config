@@ -47,7 +47,7 @@ Vagrant.configure(2) do |config|
 
     master_config.vm.provision "ansible" do |ansible|
       ansible.inventory_path = "staticInventory/vagrant_ansible_inventory"
-      ansible.playbook = "provision/ansible/playbook.yml"
+      ansible.playbook = "server.yml"
     end
   end
 

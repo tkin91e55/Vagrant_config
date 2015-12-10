@@ -1,6 +1,8 @@
 ---
 - name: Start Nginx
+  sudo: yes
   service: name=nginx state=started
 
 - name: Reload Nginx
+  sudo: yes
   service: name=nginx state=reloaded

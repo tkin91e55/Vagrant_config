@@ -1,11 +1,9 @@
 ---
 - name: Add Nginx Repository
-  sudo: yes
   apt_repository: repo='ppa:nginx/stable' state=present
   register: ppastable
 
 - name: Install Nginx
-  sudo: yes
   apt: pkg=nginx state=installed update_cache=true
   when: ppastable|success
   register: nginxinstalled
@@ -13,36 +11,30 @@
     - Start Nginx
 
 - name: Add H5BP Config
-  sudo: yes
   when: nginxinstalled|success
   copy: src=h5bp dest=/etc/nginx owner=root group=root
 
 - name: Disable Default Site
-  sudo: yes
   when: nginxinstalled|success
   file: dest=/etc/nginx/sites-enabled/default state=absent
 
 - name: Add SFH Site Config
-  sudo: yes
   when: nginxinstalled|success
   register: sfhconfig
   template: src=serversforhackers.com.conf dest=/etc/nginx/sites-available/serversforhackers.com.conf owner=root group=root
 
 - name: Enable SFH Site Config
-  sudo: yes
   when: sfhconfig|success
   file: src=/etc/nginx/sites-available/serversforhackers.com.conf dest=/etc/nginx/sites-enabled/serversforhackers.com.conf state=link
 
 
 - name: Create Web root
-  sudo: yes
   when: nginxinstalled|success
   file: dest=/var/www/serversforhackers.com/public mode=775 state=directory owner=www-data group=www-data
   notify:
     - Reload Nginx
 
 - name: Web Root Permissions
-  sudo: yes
   when: nginxinstalled|success
   file: dest=/var/www/serversforhackers.com mode=775 state=directory owner=www-data group=www-data recurse=yes
   notify:
